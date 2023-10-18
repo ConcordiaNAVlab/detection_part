@@ -26,7 +26,6 @@ from numpy import asarray
 import PIL.Image as Image
 import pandas
 import csv
-from ultralytics import YOLO
 
 '''###########################################################################
 This part is YOLOv5-based detection, and save the bounding box coordinate
@@ -62,27 +61,31 @@ import time
 import math
 import pathlib
 import datetime
-get_path = pathlib.Path.cwd()
+from ultralytics import YOLO
 
-classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
-              "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
-              "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
-              "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat",
-              "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup",
-              "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli",
-              "carrot", "hot dog", "pizza", "donut", "cake", "chair", "sofa", "pottedplant", "bed",
-              "diningtable", "toilet", "tvmonitor", "laptop", "mouse", "remote", "keyboard", "cell phone",
-              "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
-              "teddy bear", "hair drier", "toothbrush"
-              ]
-model = YOLO("yolo-Weights/yolov8n.pt")
+get_path = pathlib.Path.cwd()
+video_path = "/home/qiao/dev/datasets/videos/20231018/04_iphone11.MOV"
+parameter_path = '/home/qiao/dev/detection_part/detection/yolov8/yolo_weights/'
+parameter = 'yolov8l_20231017/best.pt'
+# video_path = 0
+# classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
+#               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
+#               "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
+#               "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat",
+#               "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup",
+#               "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli",
+#               "carrot", "hot dog", "pizza", "donut", "cake", "chair", "sofa", "pottedplant", "bed",
+#               "diningtable", "toilet", "tvmonitor", "laptop", "mouse", "remote", "keyboard", "cell phone",
+#               "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
+#               "teddy bear", "hair drier", "toothbrush"
+#               ]
+# model = YOLO("yolo-Weights/yolov8n.pt")
 
 # to get the parameter:
 # yolo task=detect mode=train model=yolov8n.pt data=AVITAGS_NAVLAB20230930-1/data.yaml epochs=30 imgsz=640
-# classNames = ["Wildfire Spot"]
-# parameter_path = '/home/qiao/dev/giao/works/detecting/segmentation/yolov8/runs/'
-# parameter = 'detect/train3/weights/best.pt'
-# model = YOLO(parameter_path + parameter)
+classNames = ["Wildfire Spot"]
+
+model = YOLO(parameter_path + parameter)
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # params for recording the yolo processed video
@@ -98,7 +101,7 @@ record_video_name = date + '_original.mp4'
 result_video_name = date+ '_bboxed.mp4'
 
 # print("[INFO] o name and r name:", record_video_name, result_video_name)
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(video_path)
 fps = cam.get(cv2.CAP_PROP_FPS)
 cam.set(3, 640)
 cam.set(4, 480)

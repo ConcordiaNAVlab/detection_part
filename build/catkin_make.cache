@@ -1,0 +1,2 @@
+yolo_pkg
+-DCATKIN_DEVEL_PREFIX=/home/qiao/dev/detection_part/devel -DCMAKE_INSTALL_PREFIX=/home/qiao/dev/detection_part/install -G Unix Makefiles

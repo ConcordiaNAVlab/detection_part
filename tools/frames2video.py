@@ -21,13 +21,13 @@ import numpy as np
 import glob
 from natsort import natsorted
 img_array = []
-filenames = natsorted(glob.glob('/home/qiao/dev/giao/data/videos/20230926/UNetruns/*.png'))
+filenames = natsorted(glob.glob('/home/qiao/dev/datasets/videos/20231016/frames/*.jpg'))
 
 # if store the .avi file, it need the fourcc of *'DIVX'
-fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 fps = 30
 frame_size = (640, 480) # width, height
-video_name = '/home/qiao/dev/giao/data/videos/20230926/runs/20230926UNet_O.mp4'
+video_name = '/home/qiao/dev/datasets/videos/20231016/forlocation.mp4'
 for filename in filenames:
     img = cv2.imread(filename)
     # height, width, layers = img.shape
