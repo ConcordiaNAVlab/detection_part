@@ -64,9 +64,9 @@ import datetime
 from ultralytics import YOLO
 
 get_path = pathlib.Path.cwd()
-video_path = "/home/qiao/dev/datasets/videos/20231018/04_iphone11.MOV"
+video_path = "/home/qiao/dev/datasets/videos/20231023/20231023.MP4"
 parameter_path = '/home/qiao/dev/detection_part/detection/yolov8/yolo_weights/'
-parameter = 'yolov8l_20231017/best.pt'
+parameter = '20231023/best.pt'
 # video_path = 0
 # classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
 #               "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
