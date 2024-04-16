@@ -1,0 +1,14 @@
+# File: config.yaml
+# Author: Linhan Qiao <qiaolinhan073@gmail.com>
+# Date: 2024-03-29
+# Last Modified By: Linhan Qiao <qiaolinhan073@gmail.com>
+# -----
+# MIT license
+
+
+path: path_to_dataset
+train: images/train
+val: images/val
+
+nc: 1
+name: ['Wildfire_spot']
