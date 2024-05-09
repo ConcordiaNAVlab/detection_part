@@ -10,7 +10,7 @@ from ultralytics import YOLO
 import cv2
 
 # Load the YOLOv8 model
-model = YOLO('yolov8n150_snowwork.pt')
+model = YOLO('yolo_weights/yolov8n150_snowwork.pt')
 # Open the video file
 video_path = "../../datasets/02_iphone6.MOV"
 cap = cv2.VideoCapture(video_path)
