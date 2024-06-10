@@ -31,7 +31,7 @@ preprocess = transforms.Compose([
 img = Image.open('/Users/qiaolinhan/dev/datasets/trial1/frame2516.jpg').convert('RGB')
 
 # Add batch dimension
-# input_tensor = img
+input_tensor = img
 input_tensor = preprocess(img).unsqueeze(0)
 print('======> Preprocessing the image')
 
@@ -41,7 +41,7 @@ model = YOLO('/Users/qiaolinhan/dev/detection_part/detection/yolov8/yolo_weights
 # model.eval()
 
 # Process the img to get output
-output = model.predict(input_tensor, device = 'mps')
+output = model.predict(input_tensor)
 print('======> Input and process the image')
 
 # Assuming the output is a list of detections, we need to pick one to visualize
@@ -104,7 +104,7 @@ target_detection = output
 #
 # Display the result
 # plt.imshow(superimposed_img)
-# plt.imshow(img)
+plt.imshow(img)
 plt.imshow(target_detection)
 plt.axis('off')
 plt.show()
