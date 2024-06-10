@@ -67,12 +67,12 @@ class ActivationsandGradients:
 class GradCAM:
     def __init__(self, model, target_layers, reshape_transform = None, use_cuda = False):
         # self.model = model.eval()
-        self.model = model.eval()
+        self.model = model
         self.target_layers = target_layers
         self.reshape_transform = reshape_transform
         self.cuda = use_cuda
-        if self.cuda:
-            self.model = model.cuda()
+        # if self.cuda:
+        #     self.model = model.cuda()
         self.activations_and_grads = ActivationsandGradients(self.model,
                                                              target_layers,
                                                              reshape_transform) 
@@ -86,6 +86,7 @@ class GradCAM:
         loss = 0
         for i in range(len(target_category)):
             loss = loss + output[i, target_category[i]]
+        # loss = sum([target(output) for target, output in zip(target_category, output)])
         return loss
 
     def get_cam_img(self, activations, grads):
@@ -134,10 +135,11 @@ class GradCAM:
         result = np.float32(result)
 
         return result
+
     # It shows the feedforward progress
     def __call__(self, input_tensor, target_category = None):
-        if self.cuda:
-            input_tensor = input_tensor.cuda()
+        # if self.cuda:
+        #     input_tensor = input_tensor.cuda()
 
         # feed forward to the network with output of "logits", did not pass "softmax"
         output = self.activations_and_grads(input_tensor)

@@ -18,6 +18,8 @@ from ultralytics import YOLO
 # qiao: need to be modified
 from utils import GradCAM, show_cam_on_image
 
+import cv2
+
 def main():
     # # Pointing out the model and the last layer name
     # model = models.mobilenet_v3_small(pretrained = True)
@@ -61,6 +63,14 @@ def main():
     # adding dimension of 'batch', [C, H, W] ---> [B, C, H, W]
     input_tensor = torch.unsqueeze(img_tensor, dim = 0)
 
+    # img = cv2.imread(img_path)
+    # # img = cv2.resize(640, 640)
+    # # rgb_img = img.copy()
+    # img = np.uint8(img) / 255
+    # # pre-process the image data (numpy)
+    # img_tensor = data_transform(img)
+    # # adding dimension of 'batch', [C, H, W] ---> [B, C, H, W]
+    # input_tensor = torch.unsqueeze(img_tensor, dim = 0)
 
     ################################
     # Transfer the model, target_layer into Grad-CAM
