@@ -175,7 +175,7 @@ def show_cam_on_image(img: np.array,
     This func overlays the cam mask on the image as a heatmap.
     By default, the heatmap is BGR format.
     ---------------------------------------------
-    paras
+    params
     ---------------------------------------------
     :: img: The base image in RGB or BGR format
     :: mask: The cam mask

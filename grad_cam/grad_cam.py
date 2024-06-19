@@ -104,7 +104,7 @@ target_detection = output
 #
 # Display the result
 # plt.imshow(superimposed_img)
-plt.imshow(img)
-plt.imshow(target_detection)
-plt.axis('off')
-plt.show()
+# plt.imshow(img)
+# plt.imshow(target_detection)
+# plt.axis('off')
+# plt.show()

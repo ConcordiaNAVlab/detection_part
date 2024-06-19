@@ -21,11 +21,11 @@ from utils import GradCAM, show_cam_on_image
 import cv2
 
 def main():
-    # # Pointing out the model and the last layer name
-    # model = models.mobilenet_v3_small(pretrained = True)
-    # # Commonly, the last layer is picked
-    # # A list can be transfered, but we just transfer one
-    # target_layers = [model.features[-1]] 
+    # Pointing out the model and the last layer name
+    model = models.mobilenet_v3_large(pretrained = True)
+    # Commonly, the last layer is picked
+    # A list can be transfered, but we just transfer one
+    target_layers = [model.features[-1]] 
 
     # model = models.vgg16(pretrained = True)
     # target_layers = [model.features]
@@ -38,13 +38,13 @@ def main():
     #
     # model = models.efficientnet_b0(pretrained = True)
     # target_layers = [model.features]
-    weights_path = input('[INFO] :: Please input the weight path of the YOLOv8n:\n')
-    model = YOLO(weights_path)
-    target_layers = [model.model.model[-4]]
+    # weights_path = input('[INFO] :: Please input the weight path of the YOLOv8n:\n')
+    # model = YOLO(weights_path)
+    # target_layers = [model.model.model[-4]]
     # pointing out the class which we are interested
     # Fire Screen 556
     # Lighter 626
-    target_category = 0
+    target_category = 556
 
     # Pre-process of the image, in data_transform
     data_transform = transforms.Compose([transforms.ToTensor(),
